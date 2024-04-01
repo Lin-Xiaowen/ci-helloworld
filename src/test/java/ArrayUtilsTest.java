@@ -45,4 +45,34 @@ public class ArrayUtilsTest {
     public void testOddOrPositiveBothPositivesAndNegatives() {
         assertEquals(3, ArrayUtils.oddOrPos(new int[]{-3, -2, 0, 1, 4}));
     }
+
+    @Test
+    void testCountOf_TargetInArray() {
+        // Test case where the target is present in the array
+        int[] array = {1, 2, 3, 4, 5, 5, 6};
+        int target = 5;
+        int expectedResult = 2; // The target '5' appears twice in the array
+        int actualResult = ArrayUtils.countOf(array, target);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void testCountOf_TargetNotInArray() {
+        // Test case where the target is not present in the array
+        int[] array = {1, 2, 3, 4, 6};
+        int target = 5;
+        int expectedResult = 0; // The target '5' does not appear in the array
+        int actualResult = ArrayUtils.countOf(array, target);
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    void testCountOf_EmptyArray() {
+        // Test case where the array is empty
+        int[] array = {};
+        int target = 5;
+        int expectedResult = 0; // The target '5' cannot appear in an empty array
+        int actualResult = ArrayUtils.countOf(array, target);
+        assertEquals(expectedResult, actualResult);
+    }
 }
